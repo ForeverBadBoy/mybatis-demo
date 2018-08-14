@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author LENOVO
  * @date 2018/08/09
@@ -29,8 +31,8 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/all/{pageNum}/{pageSize}", produces = {"application/json;charset=UTF-8"})
-    public Object findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
-        log.info("pageNum:{}, pageSize:{}", pageNum, pageSize);
+    public Object findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize, HttpSession session) {
+        log.info("pageNum:{}, pageSize:{}, timeOut:{}, id:{}", pageNum, pageSize, session.getMaxInactiveInterval(), session.getId());
         return userService.findAllUser(pageNum, pageSize);
     }
 }

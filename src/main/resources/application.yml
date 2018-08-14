@@ -1,5 +1,9 @@
 server:
   port: 8080
+  session:
+    timeout: 180
+  tomcat:
+    uri-encoding: UTF-8
 spring:
     datasource:
         name: test
