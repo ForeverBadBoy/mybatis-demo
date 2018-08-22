@@ -46,9 +46,14 @@ spring:
         exclude: static/**
 ###redis
     redis:
-      host: localhost
+      host: 192.168.1.102
       port: 6379
-      password:
+      password: redis123456
+      timeout: 0
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+
 ## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
 mybatis:
   mapper-locations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
